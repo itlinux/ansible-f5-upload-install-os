@@ -1,0 +1,14 @@
+---
+# defaults file for bigip-15
+provider:
+    password: ""
+    server: "remo.westus.cloudapp.azure.com"
+    user: admin
+    validate_certs: false
+    server_port: 443
+
+
+image_version: "BIGIP-15.1.2.1-0.0.10.iso"
+boot_location: HD1.2
+current_location: HD1.1
+filePath: "files"

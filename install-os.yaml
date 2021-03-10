@@ -47,3 +47,25 @@
       tags:
         - verify
 
+    - name: "Copy the config from {{ current_location }} to {{ boot_location }} cpcfg --source={{ current_location }} --reboot {{ boot_location }}"
+      raw: curl -u "{{ provider.user }}":"{{ provider.password }}" -k https://"{{provider.server }}":{{ provider.server_port }}/mgmt/tm/util/bash  -H "Content-type:application/json" -d "{\"command\":\"run\",\"utilCmdArgs\":\"-c 'cpcfg --source={{ current_location }} --reboot {{ boot_location }}'\"}"
+      ignore_errors: True
+      register: cpcfg
+      tags:
+        - activate_partition
+
+    - name: Verify the system was installed
+      bigip_command:
+        commands:
+          - show sys software status
+        provider: "{{ provider }}"
+      register: device_facts
+      tags:
+        - activate_partition
+
+    - name: Display
+      debug:
+        var: device_facts
+      tags:
+        - activate_partition
+

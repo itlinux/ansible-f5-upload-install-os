@@ -21,7 +21,8 @@ The playbook perfoms the following actions
 * prints out an output of when its complete
 
 === install-os.yaml
-* uploads, installs and verifies the install
+* uploads, installs and verifies the install, activate and shows the output 
+* it will take a few min before you see the active partition. You may get a error but it will come back :)
 
 === install-os-boot.yaml
 * uploads, installs, verifies the install and copies the configuration from boot location HD1.1 (BIG-IP 15.1.0.2) to boot location HD1.3 (BIG-IP 15.1.0.4) and immediately reboot the system to the HD1.3 boot location:
